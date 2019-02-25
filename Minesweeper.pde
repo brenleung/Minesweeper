@@ -7,7 +7,7 @@ private ArrayList <MSButton> bombs = new ArrayList<MSButton>(); //ArrayList of j
 
 void setup ()
 {
-    size(400, 400);
+    size(500, 500);
     textAlign(CENTER,CENTER);
     
     // make the manager
@@ -36,7 +36,7 @@ public void setBombs()
         }
         else {
             bombs.add(buttons[r][c]);
-            System.out.println(r + ", " + c);
+            //System.out.println(r + ", " + c);
         }
     }
 }
@@ -70,8 +70,8 @@ public class MSButton
     
     public MSButton ( int rr, int cc )
     {
-        width = 400/NUM_COLS;
-        height = 400/NUM_ROWS;
+        width = 500/NUM_COLS;
+        height = 500/NUM_ROWS;
         r = rr;
         c = cc; 
         x = c*width;
@@ -93,7 +93,20 @@ public class MSButton
     public void mousePressed () 
     {
         clicked = true;
-        //your code here
+        if (mouseButton == RIGHT) {
+            marked = true;
+            if (marked = false) {
+                clicked = false;
+            }
+        }
+        else if (bombs.contains( this )) { 
+            displayLosingMessage();
+        }
+        /*
+        else if (countBombs > 0) {
+            label = ""+countBombs();
+        }
+        */
     }
 
     public void draw () 
@@ -117,13 +130,21 @@ public class MSButton
     }
     public boolean isValid(int r, int c)
     {
-        //your code here
+        if (r < NUM_ROWS && r >= 0 && c < NUM_COLS && c >= 0) {
+            return true;
+        }
         return false;
     }
     public int countBombs(int row, int col)
     {
         int numBombs = 0;
-        //your code here
+        for (int r = row-1; r < row+2; r++) {
+            for (int c = col-1; c < col+2; c++) {
+                if (isValid(r, c) == true && bombs.contains(buttons[r][c]) == true) {
+                    numBombs++;
+                }
+            }
+        }
         return numBombs;
     }
 }
