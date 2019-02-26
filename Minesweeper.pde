@@ -93,20 +93,24 @@ public class MSButton
     public void mousePressed () 
     {
         clicked = true;
-        if (mouseButton == RIGHT) {
-            marked = true;
-            if (marked = false) {
+        if (mousePressed && mouseButton == RIGHT) {
+            marked = !marked;
+            if (marked = false)
                 clicked = false;
-            }
         }
         else if (bombs.contains( this )) { 
             displayLosingMessage();
         }
-        /*
-        else if (countBombs > 0) {
-            label = ""+countBombs();
+        else if (countBombs(r, c) > 0) {
+            label = ""+countBombs(r,c);
         }
-        */
+        else {
+            for (int row = r-1; row < r+2; row++) {
+                for (int col = c-1; col < c+2; col++) {
+                    buttons[row][col].mousePressed();
+                }
+            }
+        }
     }
 
     public void draw () 
