@@ -93,10 +93,11 @@ public class MSButton
     public void mousePressed () 
     {
         clicked = true;
-        if (mousePressed && mouseButton == RIGHT) {
+        if (mouseButton == RIGHT) {
             marked = !marked;
-            if (marked = false)
+            if (marked == false) {
                 clicked = false;
+            }
         }
         else if (bombs.contains( this )) { 
             displayLosingMessage();
@@ -107,7 +108,9 @@ public class MSButton
         else {
             for (int row = r-1; row < r+2; row++) {
                 for (int col = c-1; col < c+2; col++) {
-                    buttons[row][col].mousePressed();
+                    if (isValid(row, col) == true && buttons[row][col].isClicked() == false) {
+                        buttons[row][col].mousePressed();
+                    }
                 }
             }
         }
