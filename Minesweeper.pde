@@ -49,8 +49,14 @@ public void draw ()
 }
 public boolean isWon()
 {
-    //your code here
-    return false;
+    for (int r = 0; r < NUM_ROWS; r++) {
+        for (int c = 0; c < NUM_COLS; c++) {
+            if (buttons[r][c].isClicked() == false && buttons[r][c].isMarked() == false) {
+                return false;
+            }
+        }
+    }
+    return true;
 }
 public void displayLosingMessage()
 {
@@ -58,7 +64,7 @@ public void displayLosingMessage()
 }
 public void displayWinningMessage()
 {
-    //your code here
+    buttons[0][0].setLabel("Y");
 }
 
 public class MSButton
@@ -88,8 +94,6 @@ public class MSButton
     {
         return clicked;
     }
-    // called by manager
-    
     public void mousePressed () 
     {
         clicked = true;
@@ -129,6 +133,7 @@ public class MSButton
 
         rect(x, y, width, height);
         fill(0);
+        textSize(12);
         text(label,x+width/2,y+height/2);
     }
     public void setLabel(String newLabel)
