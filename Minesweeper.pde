@@ -41,12 +41,6 @@ public void setBombs()
     }
 }
 
-public void keyPressed() {
-    if (key == 'r') {
-        redraw();
-    }
-}
-
 public void draw ()
 {
     background( 0 );
