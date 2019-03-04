@@ -1,13 +1,13 @@
 import de.bezier.guido.*;
 public final static int NUM_ROWS = 20;
 public final static int NUM_COLS = 20;
-public int NUM_BOMBS = 30;
+public int NUM_BOMBS = 50;
 private MSButton[][] buttons; //2d array of minesweeper buttons
 private ArrayList <MSButton> bombs = new ArrayList<MSButton>(); //ArrayList of just the minesweeper buttons that are mined
 
 void setup ()
 {
-    size(500, 500);
+    size(600, 600);
     textAlign(CENTER,CENTER);
     
     // make the manager
@@ -60,22 +60,17 @@ public boolean isWon()
 }
 public void displayLosingMessage()
 {
-    buttons[10][2].setLabel("Y");
-    buttons[10][3].setLabel("O");
-    buttons[10][4].setLabel("U");
-    buttons[10][6].setLabel("L");
-    buttons[10][7].setLabel("O");
-    buttons[10][8].setLabel("S");
-    buttons[10][9].setLabel("E");
+    String losingMessage = "YOU LOSE";
+    for (int i = 0; i < losingMessage.length(); i++) {
+        buttons[10][i+2].setLabel(losingMessage.substring(i, i+1));
+    }
 }
 public void displayWinningMessage()
 {
-    buttons[10][2].setLabel("Y");
-    buttons[10][3].setLabel("O");
-    buttons[10][4].setLabel("U");
-    buttons[10][6].setLabel("W");
-    buttons[10][7].setLabel("I");
-    buttons[10][8].setLabel("N");
+    String winningMessage = "YOU WIN";
+    for (int i = 0; i < winningMessage.length(); i++) {
+        buttons[10][i+2].setLabel(winningMessage.substring(i, i+1));
+    }
 }
 
 public class MSButton
@@ -87,8 +82,8 @@ public class MSButton
     
     public MSButton ( int rr, int cc )
     {
-        width = 500/NUM_COLS;
-        height = 500/NUM_ROWS;
+        width = 600/NUM_COLS;
+        height = 600/NUM_ROWS;
         r = rr;
         c = cc; 
         x = c*width;
@@ -114,9 +109,18 @@ public class MSButton
                 clicked = false;
             }
         }
+        /*
         else if (bombs.contains( this )) { 
             displayLosingMessage();
+            for (int row = 0; row < 20; row++) {
+                for (int col = 0; col < 20; col++) {
+                    while (bombs.contains(buttons[row][col])) {
+                        buttons[row][col].mousePressed();
+                    }
+                }
+            }
         }
+        */
         else if (countBombs(r, c) > 0) {
             label = ""+countBombs(r,c);
         }
@@ -134,13 +138,13 @@ public class MSButton
     public void draw () 
     {    
         if (marked)
-            fill(0);
+            fill( 183,32,157 );
         else if( clicked && bombs.contains(this) ) 
-            fill(255,0,0);
+            fill( 173, 53, 26 );
         else if(clicked)
-            fill( 200 );
+            fill( 93,204,57 );
         else 
-            fill( 100 );
+            fill( 33, 90, 183 );
 
         rect(x, y, width, height);
         fill(0);
