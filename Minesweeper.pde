@@ -74,7 +74,7 @@ public void displayLosingMessage()
 }
 public void displayWinningMessage()
 {
-    String winningMessage = "YOU WIN";
+    String winningMessage = "YOU WIN ";
     for (int i = 0; i < winningMessage.length(); i++) {
         buttons[10][i+6].setLabel(winningMessage.substring(i, i+1));
     }
