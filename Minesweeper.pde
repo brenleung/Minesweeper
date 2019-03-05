@@ -62,14 +62,21 @@ public void displayLosingMessage()
 {
     String losingMessage = "YOU LOSE";
     for (int i = 0; i < losingMessage.length(); i++) {
-        buttons[10][i+2].setLabel(losingMessage.substring(i, i+1));
+        buttons[10][i+6].setLabel(losingMessage.substring(i, i+1));
+    }
+    for (int row = 0; row < 20; row++) {
+        for (int col = 0; col < 20; col++) {
+            if (bombs.contains(buttons[row][col]) && buttons[row][col].isClicked() == false) {
+                buttons[row][col].mousePressed();
+            }
+        }
     }
 }
 public void displayWinningMessage()
 {
     String winningMessage = "YOU WIN";
     for (int i = 0; i < winningMessage.length(); i++) {
-        buttons[10][i+2].setLabel(winningMessage.substring(i, i+1));
+        buttons[10][i+6].setLabel(winningMessage.substring(i, i+1));
     }
 }
 
@@ -109,18 +116,9 @@ public class MSButton
                 clicked = false;
             }
         }
-        /*
         else if (bombs.contains( this )) { 
             displayLosingMessage();
-            for (int row = 0; row < 20; row++) {
-                for (int col = 0; col < 20; col++) {
-                    while (bombs.contains(buttons[row][col])) {
-                        buttons[row][col].mousePressed();
-                    }
-                }
-            }
         }
-        */
         else if (countBombs(r, c) > 0) {
             label = ""+countBombs(r,c);
         }
