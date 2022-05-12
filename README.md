@@ -1,5 +1,10 @@
 Minesweeper
 ==================
+This repository was originally created in 2019 for my AP Computer Science A class. I have forked it from my old account to this account to maintain its original form. This remains one of my favorite projects, as I have always had a passion for video games, and I believe minesweeper is a simple and fun game to create. The final project can be viewed here: http://brenleung.github.io/Minesweeper/
+
+The original readme file is below:
+
+--------------------
 
 In this assignment you will be recreating the [Microsoft Minesweeper game](http://en.wikipedia.org/wiki/Minesweeper_(video_game)). If you are not familiar with minesweeper you should play the game until you are. You can find one version at [http://minesweeperonline.com/](http://minesweeperonline.com/). You can also try my [slightly easier Minesweeper game](http://simart.github.io/MinesweeperFinished/). You may find the [2d Arrays](https://docs.google.com/presentation/d/1_rk3nKsde5bQGs-36ijMh4wmNN3RtqFpNL59R6CnC-c/edit?usp=sharing) slide presentation and [codingbat minesweeper problems](https://codingbat.com/home/simona1@sfusd.edu/minesweeper) helpful.
 
